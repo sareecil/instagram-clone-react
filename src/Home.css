@@ -1,16 +1,4 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-}
 
-body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-}
-  
-* {
-    margin: 0;
-    padding: 0;
-}
   
 .left-nav{
     width: 250px;
