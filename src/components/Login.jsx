@@ -1,6 +1,6 @@
 import instagramLogoText from '../assets/img/instagram-wordmark.svg'
 import "../index.css"
-import { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Home from './Home';
 
 
@@ -20,50 +20,48 @@ const urlPrefix = "https://pgyjuznzjnigvztxfqwd.supabase.co/rest/v1/"
 export default function Login() {
     const registerForm = useRef();
     const loginForm = useRef();
+    const [isLogged, setIsLooged] = useState(false);
 
     function handleSubmit(e) {
         e.preventDefault();
         const myFormData = new FormData(e.target)
-        console.log(Object.fromEntries(myFormData));
+        const getUserName = myFormData.get('userName');
+        
         fetch(urlPrefix + "users", requestOptions)
             .then(response => response.json())
-            .then(result => {  
-            result.filter(user => { 
-                if(user.user_username === Object.fromEntries(myFormData).userName) {
-                    console.log("home gidildi");
-                    <Home/>
+            .then(result => {
+                const findUser = result.find(user => user.user_username === getUserName);
+                if(findUser) {
+                    console.log("Kullanıcı bulundu");
+                    setIsLooged(true)
                 }
-                else {
-                    console.log("tekrar dene")
-                }
-            });
-
-            
-            
-            
-        })
+            })
     } 
+
+    
 
  return(
     <>
-        <div className="login">
-           <div className="login-info">
-                <div className='logo '>       
-                   <img src={instagramLogoText} className="logo react" alt="React logo" />       
+        {isLogged ? (
+            <Home/>
+        ) : (
+            <div className="login">
+                <div className="login-info">
+                    <div className='logo '>       
+                        <img src={instagramLogoText} className="logo react" alt="React logo" />       
+                    </div>
+                    <form className='input-login' onSubmit={handleSubmit} ref={loginForm}>                
+                        <input required type="text" id='userName' name="userName" placeholder="Kullanıcı Adı"/><br />
+                        <input required type="password" id='password' name="password" placeholder="Şifre"/><br />
+                        <button>Giriş Yap</button>
+                    </form>
                 </div>
-                 <form className='input-login' onSubmit={handleSubmit} ref={loginForm}>                
-                     <input required type="text" id='userName' name="userName" placeholder="Kullanıcı Adı"/><br />
-                     <input required type="password" id='password' name="password" placeholder="Şifre"/><br />
-                     <button>Giriş Yap</button>
-                 </form>
+                <div className="register">
+                    <p>Hesabın yok mu?</p>
+                    <a href="/register" ref={registerForm}>Kaydol</a>
+                </div>
             </div>
-            <div className="register">
-                <p>Hesabın yok mu?</p>
-                <a href="/register" ref={registerForm}>Kaydol</a>
-            </div>
-        </div>
-        
-        
+        )}      
     </>
 
  )

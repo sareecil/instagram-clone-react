@@ -1,8 +1,9 @@
 import "../Home.css"
+import Navbar from "./Navbar"
 
 export default function Home() {
     
     return(
-        <h3>Merhaba</h3>
+        <Navbar/>
     )
 }
