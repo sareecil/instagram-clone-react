@@ -1,9 +1,13 @@
 import "../Home.css"
 import Navbar from "./Navbar"
+import Content from "./Content"
 
 export default function Home() {
     
     return(
-        <Navbar/>
+        <div className="container">
+            <Navbar/>
+            <Content/>
+        </div>
     )
 }

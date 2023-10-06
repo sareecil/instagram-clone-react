@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react'
 import Home from './Home';
 
 
-const urlPrefix = "https://pgyjuznzjnigvztxfqwd.supabase.co/rest/v1/"
+export const urlPrefix = "https://pgyjuznzjnigvztxfqwd.supabase.co/rest/v1/"
 
 
     var myHeaders = new Headers();
