@@ -26,18 +26,21 @@ export default function Content() {
         .then(data => setPosts(data))
     }, [])
 
+
     return (
         <>
             <div className="posts"> 
                 {
                     posts.map(post => (
                         <div key={post.id} className="post">
-                            <h3>{post.post_title}</h3>
+                            <h3>{post.post_title} </h3>
                             <img src={post.post_img} className='img-size' alt="" />
                             <div className="likes">
                                 <div className="like">
                                     <a href=""><FontAwesomeIcon icon={faHeart} style={{color: "#000000",}} className='like-icon' /></a>
+                                    <p>10 beğenme</p>
                                 </div>
+                                <h4>{post.post_title}</h4>
                             </div>
                         </div> 
                     ))

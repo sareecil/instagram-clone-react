@@ -1,10 +1,92 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.login {
+  align-items: center;
+  width: 460px;
+  margin: auto;
+  padding: 10px 60px;
+  position: relative;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.login-info {
+  border: 1px solid rgba(128, 128, 128, 0.39);
+  padding-top: 20px;
+  padding-inline: 37px;
+  margin-top: 12px;
+}
+
+.register {
+  border: 1px solid rgba(128, 128, 128, 0.39);
+  margin-block: 12px;
+  display: flex;
+  gap: 10px;
+  padding-inline: 70px;
+  padding-block: 5px;
+}
+
+.register a {
+  text-decoration: none;
+}
+
+.logo img {
+  padding-left: 50px;
+}
+
+.logo{
+  width: 175px;
+  height: 51px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.input-login input {
+  display: block;
+  padding: 9px 0 7px 8px;
+  background-color: rgb(250, 250, 250);
+  border-color: rgba(117, 120, 122, 0.281);
+  width: 275px;
+}
+
+.input-login button {
+  background-color: rgb(117, 174, 228);
+  color: #fff;
+  border: none;
+  padding: 10px 105px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
 .container{
     display: grid;
-    grid-template-areas: "left-nav g-posts g-posts g-posts";
+    grid-template-areas: "left-nav g-posts g-posts right-section";
 }
   
 .left-nav{
-    width: 250px;
+    width: 350px;
     border-right: 1px solid rgb(196, 192, 192);
     min-height: 100vh;
     grid-area: left-nav;
@@ -26,6 +108,11 @@
 
 .home {
     width: 130px;
+}
+
+.like svg {
+    font-size: 25px;
+
 }
 
 .icon {
@@ -61,24 +148,39 @@
 } */
 
 .posts {
+    margin-top: 84px;
     grid-area: g-posts;
-
+    width: 165px;
 }
 
 .post {
-    width: 100vh;
-    border-bottom: 1px solid rgb(165, 162, 162) ;
+    margin-top: 28px;
+    width: 50vh;
+    border-bottom: 1px solid rgba(165, 162, 162, 0.658) ;
 
 }
 
+.post h3 {
+    margin-bottom: 11px;
+    font-size: 15px;
+}
+
 .img-size {
-    width: 400px ;
-    height: 303px;
+    width: 500px ;
+    height: 406px;
     padding-bottom: 15px;
 }
 
 .like-icon {
-    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.like p {
+    margin-bottom: 10px;
+}
+
+.likes h4 {
+    margin-bottom: 10px;
 }
 
 .card {
@@ -123,4 +225,31 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    
+}
+
+.right-section {
+  grid-area: right-section;
+}
+
+.user-info p {
+  color: grey;
+}
+
+.for-you-section {
+  width: 250px;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.follow-us {
+  border: none;
+  background-color: transparent;
+  color: rgb(67, 154, 212);
+}
+
+.follow-us:hover {
+  background-color: transparent;
+  color: #000000;
 }
