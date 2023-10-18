@@ -238,8 +238,10 @@ body{
 
 .for-you-section {
   width: 250px;
+  cursor: pointer;
   display: flex;
   padding: 10px;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -249,7 +251,19 @@ body{
   color: rgb(67, 154, 212);
 }
 
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-info img{
+  width: 50px;
+  border-radius: 30px;
+}
+
 .follow-us:hover {
   background-color: transparent;
   color: #000000;
+  cursor: pointer;
 }

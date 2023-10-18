@@ -4,6 +4,7 @@ import instagramLogoText from '../assets/img/instagram-wordmark.svg'
 import "../Home.css"
 import Content from './Content'
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 
 
 
@@ -22,16 +23,16 @@ export default function Navbar() {
                 </div>
                 <div className="left-nav-ul">                
                     <li className="menu-item">
-                        <a href="#"><FontAwesomeIcon icon={faHouse} style={{color: "#000000",}} className='icon' />Anasayfa</a>
+                        <Link to={"/"}><FontAwesomeIcon icon={faHouse} style={{color: "#000000",}} className='icon' />Anasayfa</Link>
                     </li>
                     <li className="menu-item">
-                        <a href="#"><FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#000000",}} className='icon' />Ara</a>
+                        <Link to={"/search"}><FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#000000",}} className='icon' />Ara</Link>
                     </li>
                     <li className="menu-item" onClick={createPost} >
-                        <a href="#"><FontAwesomeIcon icon={faPlus} style={{color: "#000000",}} className='icon' />Gönderi Oluştur</a>
+                        <Link to={"/"}><FontAwesomeIcon icon={faPlus} style={{color: "#000000",}} className='icon' />Gönderi Oluştur</Link>
                     </li>
                     <li className="menu-item">
-                        <a href="#"><FontAwesomeIcon icon={faUser} style={{color: "#000000",}} className='icon' />Profil</a>
+                        <Link to={"/profile"}><FontAwesomeIcon icon={faUser} style={{color: "#000000",}} className='icon' />Profil</Link>
                     </li>
                 </div>           
             </div>   

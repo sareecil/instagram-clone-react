@@ -15,13 +15,15 @@ var myHeaders = new Headers();
 
 export default function Right() {
     const [users, setUsers] = useState([]);
+    const [userProfile, setUserProfile] = useState([]);
 
     useEffect(() => {
         fetch(urlPrefix + "users", requestOptions)
         .then(response => response.json())
-        .then(data => {
+        .then(data => { 
             console.log(data);
-            setUsers(data)
+            setUsers(data);
+            setUserProfile(data.user_profil)
         } ) 
     }, [])
 
@@ -33,7 +35,10 @@ export default function Right() {
                     {
                         users.map(user => (
                             <div key={user.id} className="for-you-section">
-                                <h5>{user.user_username}</h5>
+                                <div className="profile-info">
+                                    <img src={user.user_profile} alt="" />
+                                    <h5>{user.user_username}</h5>
+                                </div>
                                 <button className='follow-us'>Takip Et</button>
                             </div>
                         ))

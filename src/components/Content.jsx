@@ -17,13 +17,16 @@ var myHeaders = new Headers();
     };
 
 export default function Content() {
-    // const [user, setUser] = useState()
     const [posts, setPosts] = useState([])
+
 
     useEffect(() => {
         fetch(urlPrefix + "posts", requestOptions)
         .then(response => response.json())
-        .then(data => setPosts(data))
+        .then(data => {
+            console.log(data);
+            setPosts(data)
+        })
     }, [])
 
 
@@ -31,8 +34,9 @@ export default function Content() {
         <>
             <div className="posts"> 
                 {
-                    posts.map(post => (
-                        <div key={post.id} className="post">
+                    posts.map(post => ( 
+                       
+                        <div key={post.id} className="post">                            
                             <h3>{post.post_title} </h3>
                             <img src={post.post_img} className='img-size' alt="" />
                             <div className="likes">
