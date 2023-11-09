@@ -1,8 +1,8 @@
 import { urlPrefix } from './Login'
 import React, {  useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
-
+import { faHeart, faEllipsis, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 import "../Home.css"
 
 
@@ -18,17 +18,31 @@ var myHeaders = new Headers();
 
 export default function Content() {
     const [posts, setPosts] = useState([])
-
+    const [isOptionOpen, setOptionOpen] = useState(false)
 
     useEffect(() => {
         fetch(urlPrefix + "posts", requestOptions)
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            setPosts(data)
+            setPosts(data);
+            const shuffledData = shuffleArray(data);
+            setPosts(shuffledData);
         })
     }, [])
 
+    const shuffleArray = (array) => {
+        const shuffled = array.slice();
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+      };
+
+    function getOption() {
+        setOptionOpen(!isOptionOpen)
+    }
 
     return (
         <>
@@ -36,8 +50,12 @@ export default function Content() {
                 {
                     posts.map(post => ( 
                        
-                        <div key={post.id} className="post">                            
-                            <h3>{post.post_title} </h3>
+                        <div key={post.id} className="post">     
+                            {/* <img src={post.id.user_id.user_profile} alt="" />                 */}
+                            <div className="post-option-title">
+                                <h3>{post.post_title}</h3>
+                                <Link to={"/"}><FontAwesomeIcon icon={faEllipsis} style={{color: "#000000",}} className='option-btn' onClick={getOption} /></Link>
+                            </div>
                             <img src={post.post_img} className='img-size' alt="" />
                             <div className="likes">
                                 <div className="like">
@@ -50,6 +68,20 @@ export default function Content() {
                     ))
                 }
             </div>   
+            {/* <div className={isOptionOpen ? "option-btn-open" : "option-btn"}>
+                <button className='btn' onClick={getOption}><FontAwesomeIcon icon={faXmark} style={{color: "#ffffff",}} /></button>
+
+                <div className="option-page">
+                    <div className="option-content">
+                        <li className='red'>Şikayet Et</li>
+                        <li className='red'>Takibi Bırak</li>
+                        <li>Favorilere ekle</li>
+                        <li>Gönderiye Git</li>
+                        <li>Paylai...</li>
+                        <li onClick={getOption} className='close-option'>İptal</li>
+                    </div>
+                </div>
+            </div> */}
             
             
         </>

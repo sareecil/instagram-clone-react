@@ -1,8 +1,8 @@
 import instagramLogoText from '../assets/img/instagram-wordmark.svg'
-import "../index.css"
 import React, { useRef, useState } from 'react'
 import Home from './Home';
-
+import loginImg from '../assets/img/home-phones.png';
+import img from '../assets/img/screenshot3.png'
 
 export const urlPrefix = "https://pgyjuznzjnigvztxfqwd.supabase.co/rest/v1/"
 
@@ -45,20 +45,28 @@ export default function Login() {
         {isLogged ? (
             <Home/>
         ) : (
-            <div className="login">
-                <div className="login-info">
-                    <div className='logo '>       
-                        <img src={instagramLogoText} className="logo react" alt="React logo" />       
-                    </div>
-                    <form className='input-login' onSubmit={handleSubmit} ref={loginForm}>                
-                        <input required type="text" id='userName' name="userName" placeholder="Kullanıcı Adı"/><br />
-                        <input required type="password" id='password' name="password" placeholder="Şifre"/><br />
-                        <button>Giriş Yap</button>
-                    </form>
+            <div className="login-form">
+                
+                <div className="img-form">
+                    <img src={loginImg} alt="" />
+                    <img src={img} alt="" className='img-absolute'/>
                 </div>
-                <div className="register">
-                    <p>Hesabın yok mu?</p>
-                    <a href="/register" ref={registerForm}>Kaydol</a>
+                
+                <div className="login">
+                    <div className="login-info">
+                        <div className='logo '>       
+                            <img src={instagramLogoText} className="logo react" alt="React logo" />       
+                        </div>
+                        <form className='input-login' onSubmit={handleSubmit} ref={loginForm}>                
+                            <input required type="text" id='userName' name="userName" placeholder="Kullanıcı Adı"/><br />
+                            <input required type="password" id='password' name="password" placeholder="Şifre"/><br />
+                            <button>Giriş Yap</button>
+                        </form>
+                    </div>
+                    <div className="register">
+                        <p>Hesabın yok mu?</p>
+                        <a href="/register" ref={registerForm}>Kaydol</a>
+                    </div>
                 </div>
             </div>
         )}      
